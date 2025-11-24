@@ -30,7 +30,7 @@ def save_tasks(tasks):
     """
     try:
         with open(TASK_FILE, 'w') as f:
-            # Dump the list of task dictionaries to the file
+            # UPDATE the list of task dictionaries to the file
             json.dump(tasks, f, indent=4)
         print(f"\nSuccessfully saved {len(tasks)} tasks to {TASK_FILE}.")
     except IOError as e:
@@ -51,7 +51,7 @@ def view_tasks(tasks):
         # Determine the status string and color for display
         status = "[DONE]" if task['done'] else "[PENDING]"
         
-        # Format the output clearly with index, status, and description
+        # Format output clearly with index, status, and description
         print(f"{i + 1}. {status:<10} - {task['description']}")
     print("==================================\n")
 
@@ -73,7 +73,7 @@ def complete_task(tasks, index):
     Handles index bounds checking and type validation.
     """
     try:
-        # Convert user's 1-based index to 0-based list index
+        # Convert users 1-based index to 0-based list index
         task_index = int(index) - 1
 
         if 0 <= task_index < len(tasks):
